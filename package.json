@@ -1,0 +1,42 @@
+{
+  "name": "moneybird-js",
+  "version": "0.0.1",
+  "description": "A client for Moneybird in javascript",
+  "license": "MIT",
+  "author": "Print.one",
+  "homepage": "https://github.com/Print-one/moneybird-js/",
+  "repository": "https://github.com/Print-one/moneybird-js/",
+  "bugs": "https://github.com/Print-one/moneybird-js/issues",
+  "scripts": {
+    "build": "nps build",
+    "clean": "nps clean",
+    "format": "nps format",
+    "lint": "npm lint",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@markforged/nps": "^5.11.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-no-relative-import-paths": "^1.5.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.8.7",
+    "prettier-package-json": "^2.8.0",
+    "semantic-release": "^21.0.1",
+    "typescript": "^5.0.3",
+    "typescript-transform-paths": "^3.4.6"
+  },
+  "keywords": [
+    "api",
+    "bookkeeping",
+    "moneybird",
+    "rest"
+  ]
+}

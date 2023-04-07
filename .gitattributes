@@ -1,0 +1,38 @@
+## This .gitattributes file automatically formats the EOL character in certain filetypes within the repository
+
+## Source code
+# JavaScript, TypeScript source files
+*.js                    text eol=lf
+*.ts                    text eol=lf
+
+# Shell scripts
+*.sh                    text eol=lf
+*.bash                  text eol=lf
+
+# Windows batch and PowerShell scripts
+*.bat                   text eol=crlf
+*.cmd                   text eol=crlf
+*.ps1                   text eol=crlf
+
+##### Other file types #####
+
+## Text files and documentation
+*.txt                   text
+*.md                    text diff=markdown
+README*                 text
+RELEASING*              text
+CHANGELOG*              text
+CONTRIBUTING*           text
+INSTALL*                text
+LICENSE*                text
+
+## Non-text documentation
+*.html                  text diff=html
+*.pdf                   binary
+*.json                  text eol=lf
+*.rtf                   binary
+
+## Git Properties
+.gitignore              text
+.gitmodules             text
+.gitattributes          text

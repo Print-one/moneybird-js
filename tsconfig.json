@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "preserveSymlinks": true,
+
+    "removeComments": true,
+    "incremental": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+
+    "strict": true,
+
+    "resolveJsonModule": true,
+
+    "paths": {
+      "~/test/*": ["./test/*"],
+      "~/*": ["./src/*"]
+    },
+
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ],
+
+    "baseUrl": "./",
+    "outDir": "./dist"
+  },
+
+  "include": ["src/**/*.ts", "test/**/*.ts"]
+}
