@@ -2,8 +2,9 @@ import { Gaxios, GaxiosResponse } from "gaxios";
 import { IAdministration, MoneybirdOptions } from "./common";
 import { Administration } from "./administration";
 import { GaxiosOptions } from "gaxios/build/src/common";
+import { HTTP } from "./httpHandler";
 
-export class Moneybird {
+export class Moneybird implements HTTP {
   private readonly client: Gaxios;
   private readonly url: string;
   private readonly version: string;

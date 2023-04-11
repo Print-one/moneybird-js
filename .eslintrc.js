@@ -9,7 +9,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
-  ignorePatterns: ["./node_modules", "./dist", "./lib", "./package-lock.json"],
+  ignorePatterns: ["**/node_modules", "**/lib", "**/package-lock.json"],
   parser: "@typescript-eslint/parser",
   plugins: [
     "@typescript-eslint",

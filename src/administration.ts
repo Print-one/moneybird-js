@@ -1,7 +1,7 @@
 import { Moneybird } from "./moneybird";
 import { IAdministration, IContact, IContactCreate } from "./common";
 import { Contact } from "./contact";
-import { GaxiosOptions } from "gaxios/build/src/common";
+import { HTTP, HttpHandler } from "./httpHandler";
 
 type PaginatedOptions = Partial<{
   // The page to return
@@ -21,7 +21,13 @@ export class Administration {
     this.moneybird = moneybird;
     this.id = data.id;
     this.data = data;
+    this.HTTP = new HttpHandler(this.moneybird, `${this.id}`);
   }
+
+  /**
+   * To perform requests to the Moneybird API in the context of this administration
+   */
+  public readonly HTTP: HTTP;
 
   /**
    * Returns a list of all contacts in the administration
@@ -36,7 +42,7 @@ export class Administration {
       }
     >
   ): Promise<Contact[]> {
-    const contacts = await this.GET<IContact[]>("contacts", {
+    const contacts = await this.HTTP.GET<IContact[]>("contacts", {
       params,
     });
 
@@ -65,7 +71,7 @@ export class Administration {
       .map(([key, value]) => `${key}:${value}`)
       .join(",");
 
-    const contacts = await this.GET<IContact[]>(`contacts/filter`, {
+    const contacts = await this.HTTP.GET<IContact[]>(`contacts/filter`, {
       params: {
         filter: filterString,
         ...pagination,
@@ -82,7 +88,7 @@ export class Administration {
    * @param id The id of the contact
    */
   public async getContact(id: string): Promise<Contact> {
-    const contact = await this.GET<IContact>(`contacts/${id}`);
+    const contact = await this.HTTP.GET<IContact>(`contacts/${id}`);
 
     return new Contact(this.moneybird, this, contact);
   }
@@ -92,7 +98,7 @@ export class Administration {
    * @param id The customer id of the contact
    */
   public async getCustomer(id: string): Promise<Contact> {
-    const contact = await this.GET<IContact>(`contacts/customer_id/${id}`);
+    const contact = await this.HTTP.GET<IContact>(`contacts/customer_id/${id}`);
 
     return new Contact(this.moneybird, this, contact);
   }
@@ -119,54 +125,8 @@ export class Administration {
       );
     }
 
-    const data = await this.POST<IContact>("contacts", { contact });
+    const data = await this.HTTP.POST<IContact>("contacts", { contact });
 
     return new Contact(this.moneybird, this, data);
-  }
-
-  /**
-   * Performs a GET request to the moneybird API in the context of this administration
-   * @param url The url to perform the request to
-   * @param options The options for the request
-   */
-  public async GET<T>(url: string, options: GaxiosOptions = {}): Promise<T> {
-    return await this.moneybird.GET<T>(`${this.id}/${url}`, options);
-  }
-
-  /**
-   * Performs a POST request to the moneybird API in the context of this administration
-   * @param url The url to perform the request to
-   * @param data The data to send with the request
-   * @param options The options for the request
-   */
-  public async POST<T>(
-    url: string,
-    data: unknown,
-    options: GaxiosOptions = {}
-  ): Promise<T> {
-    return await this.moneybird.POST<T>(`${this.id}/${url}`, data, options);
-  }
-
-  /**
-   * Performs a PATCH request to the moneybird API in the context of this administration
-   * @param url The url to perform the request to
-   * @param data The data to send with the request
-   * @param options The options for the request
-   */
-  public async PATCH<T>(
-    url: string,
-    data: unknown,
-    options: GaxiosOptions = {}
-  ): Promise<T> {
-    return await this.moneybird.PATCH<T>(`${this.id}/${url}`, data, options);
-  }
-
-  /**
-   * Performs a DELETE request to the moneybird API in the context of this administration
-   * @param url The url to perform the request to
-   * @param options The options for the request
-   */
-  public async DELETE<T>(url: string, options: GaxiosOptions = {}): Promise<T> {
-    return await this.moneybird.DELETE<T>(`${this.id}/${url}`, options);
   }
 }
