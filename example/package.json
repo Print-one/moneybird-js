@@ -1,0 +1,13 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "dependencies": {
+    "@print-one/moneybird-js": "file:../print-one-moneybird-js-1.0.0.tgz"
+  },
+  "scripts": {
+    "start": "cd ../ && npm run build && npm pack && cd example && rimraf node_modules package-lock.json && npm i && node ./example.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11"
+  }
+}

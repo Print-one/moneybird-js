@@ -2,8 +2,8 @@
 
 module.exports = {
   scripts: {
-    build: "tsc --project tsconfig.build.json",
-    clean: "rimraf ./dist",
+    build: "nps clean && tsc --project tsconfig.build.json",
+    clean: "rimraf ./lib",
     format: {
       default: "nps --prefix=format eslint prettier packageJson",
       eslint: "eslint --fix .",

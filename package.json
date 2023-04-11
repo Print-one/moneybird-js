@@ -1,5 +1,5 @@
 {
-  "name": "moneybird-js",
+  "name": "@print-one/moneybird-js",
   "version": "1.0.0",
   "description": "A client for Moneybird in javascript",
   "license": "MIT",
@@ -14,6 +14,9 @@
     "lint": "npm lint",
     "semantic-release": "semantic-release"
   },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": ["lib/**"],
   "devDependencies": {
     "@markforged/nps": "^5.11.2",
     "@semantic-release/changelog": "^6.0.3",
@@ -38,5 +41,8 @@
     "bookkeeping",
     "moneybird",
     "rest"
-  ]
+  ],
+  "dependencies": {
+    "gaxios": "^5.1.0"
+  }
 }
