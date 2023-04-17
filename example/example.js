@@ -5,12 +5,10 @@ moneybird.instance.setOptions({
   api_token: process.env.MONEYBIRD_API_KEY,
 });
 
-//wrap in async function to use await
 (async () => {
-  const administration =
-    moneybird.instance.administration("384811992634886094");
-
-  const contact = await administration.contact("384823351689873198").delete();
-
-  console.log(contact);
+  const administrations = await moneybird.instance.administrations();
+  for (const administration of administrations) {
+    const contacts = await administration.contacts();
+    console.log(contacts);
+  }
 })().catch(console.log);

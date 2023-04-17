@@ -1,7 +1,15 @@
 import { Moneybird } from "./moneybird";
-import { IAdministration, IContact, IContactCreate } from "./common";
+import {
+  IAdministration,
+  IContact,
+  IContactCreate,
+  ISalesInvoice,
+  ISalesInvoiceCreate,
+  ISalesInvoiceState,
+} from "./common";
 import { Contact } from "./contact";
 import { HTTP, HttpHandler } from "./httpHandler";
+import { SalesInvoice } from "./salesInvoice";
 
 type PaginatedOptions = Partial<{
   // The page to return
@@ -23,6 +31,9 @@ export class Administration {
     this.data = data;
     this.HTTP = new HttpHandler(this.moneybird, `${this.id}`);
   }
+
+  //////////////////////////  CONTACTS  //////////////////////////
+  //region Contacts
 
   /**
    * To perform requests to the Moneybird API in the context of this administration
@@ -65,7 +76,7 @@ export class Administration {
       // The date the contact was last updated
       updated_after: string;
     }>,
-    pagination: PaginatedOptions
+    pagination: PaginatedOptions = {}
   ): Promise<Contact[]> {
     const filterString = Object.entries(filter)
       .map(([key, value]) => `${key}:${value}`)
@@ -129,4 +140,113 @@ export class Administration {
 
     return new Contact(this.moneybird, this, data);
   }
+
+  //endregion Contacts
+
+  //////////////////////////  INVOICES  //////////////////////////
+  //region Invoices
+
+  /**
+   * Returns a list of all sales invoices in the administration
+   */
+  public async salesInvoices(
+    params?: PaginatedOptions
+  ): Promise<SalesInvoice[]> {
+    const invoices = await this.HTTP.GET<ISalesInvoice[]>("sales_invoices", {
+      params,
+    });
+
+    return invoices.map((i) => new SalesInvoice(this.moneybird, this, i));
+  }
+
+  /**
+   * Returns a list of all sales invoices in the administration that match the given filter
+   * @param filter The filter to apply to the invoices
+   * @param pagination The pagination options
+   */
+  public async filterSalesInvoices(
+    filter: Partial<{
+      // The state of the invoice
+      state: "all" | ISalesInvoiceState | ISalesInvoiceState[];
+      // The period of the invoice, can also be in format YYMMDD..YYMMDD;
+      // e.g. 150101..150131 means 1 january 2015 until 31 january 2015
+      period:
+        | "this_month"
+        | "prev_month"
+        | "next_month"
+        | "this_quarter"
+        | "prev_quarter"
+        | "next_quarter"
+        | "this_year"
+        | "prev_year"
+        | "next_year"
+        | string;
+      // Select invoices with a certain reference
+      reference: string;
+      // Select invoices belonging to a certain contact
+      contact_id: string;
+      // Select invoices created by a certain recurring invoice
+      recurring_sales_invoice_id: string;
+      // Select invoices that use a certain workflow
+      workflow_id: string;
+      // Select invoices created after the given time (exclusive). ISO 8601 formatted string. The time to compare with is in UTC timezone
+      created_after: string;
+      // Select invoices updated after the given time (exclusive). ISO 8601 formatted string. The time to compare with is in UTC timezone
+      updated_after: string;
+    }>,
+    pagination: PaginatedOptions = {}
+  ): Promise<SalesInvoice[]> {
+    let filterParam = "";
+
+    if (filter) {
+      filterParam = Object.entries(filter)
+        // @ts-expect-error TS doesn't know that the value is an array
+        .map(([key, value]) => `${key}:${value.join ? value.join("|") : value}`)
+        .join(",");
+    }
+
+    const invoices = await this.HTTP.GET<ISalesInvoice[]>("sales_invoices", {
+      params: {
+        filter: filterParam,
+        ...pagination,
+      },
+    });
+
+    return invoices.map((i) => new SalesInvoice(this.moneybird, this, i));
+  }
+
+  /**
+   * Returns a sales invoice object with the given id
+   * @param id The id of the sales invoice
+   */
+  public async getSalesInvoice(id: string): Promise<SalesInvoice> {
+    const invoice = await this.HTTP.GET<ISalesInvoice>(`sales_invoices/${id}`);
+
+    return new SalesInvoice(this.moneybird, this, invoice);
+  }
+
+  /**
+   * Returns a sales invoice object without fetching the data from the API
+   * This is useful when you already have the invoice id and want to perform actions on it
+   * @param id The id of the sales invoice
+   */
+  public salesInvoice(id: string): SalesInvoice {
+    return new SalesInvoice(this.moneybird, this, { id } as ISalesInvoice);
+  }
+
+  /**
+   * Creates a new sales invoice in the administration
+   * @param invoice The invoice to create
+   */
+  public async createSalesInvoice(
+    invoice: Partial<ISalesInvoiceCreate>
+  ): Promise<SalesInvoice> {
+    const data = await this.HTTP.POST<ISalesInvoice>("sales_invoices", {
+      sales_invoice: invoice,
+    });
+
+    return new SalesInvoice(this.moneybird, this, data);
+  }
+
+  //endregion Invoices
 }
