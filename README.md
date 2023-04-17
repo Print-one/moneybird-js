@@ -1,31 +1,19 @@
 # Moneybird.js
 
+[![npm package][npm-img]][npm-url]
+[![Build Status][build-img]][build-url]
+[![Issues][issues-img]][issues-url]
+[![Semantic Release][semantic-release-img]][semantic-release-url]
+
+> A wrapper for the Moneybird API.
+
 ## Currently supported endpoints
 
-- [x] Administration
-- [x] Contact*
-- [x] Sales invoice*
-- [ ] Documents
-- [ ] Estimates
-- [ ] External sales invoice
-- [ ] Financial accounts
-- [ ] Financial mutation
-- [ ] Financial statement
-- [ ] Identities
-- [ ] Ledger account
-- [ ] Payment
-- [ ] Product
-- [ ] Project
-- [ ] Purchase transaction
-- [ ] Recurring sales invoice
-- [ ] Subscription
-- [ ] Tax rate
-- [ ] Time entry
-- [ ] User
-- [ ] Webhook
-- [ ] Workflow
+- Administration
+- Contact*
+- Sales invoice*
 
-* not all endpoints are yet implemented
+*not all endpoints are yet implemented
 
 ## Usage
 
@@ -50,3 +38,19 @@ instance.administrations().then(async (administration) => {
   console.log(contacts);
 });
 ```
+
+[build-img]:https://github.com/Print-one/moneybird-js/actions/workflows/release.yml/badge.svg
+
+[build-url]:https://github.com/Print-one/moneybird-js/actions/workflows/release.yml
+
+[npm-img]:https://img.shields.io/npm/v/@print-one/moneybird-js
+
+[npm-url]:https://www.npmjs.com/package/@print-one/moneybird-js
+
+[issues-img]:https://img.shields.io/github/issues/Print-one/moneybird-js
+
+[issues-url]:https://github.com/ryansonshine/Print-one/moneybird-js/issues
+
+[semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+
+[semantic-release-url]:https://github.com/semantic-release/semantic-release
