@@ -1,6 +1,6 @@
 {
   "name": "@print-one/moneybird-js",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A client for Moneybird in javascript",
   "license": "MIT",
   "author": "Print.one",
