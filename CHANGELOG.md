@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Print-one/moneybird-js/compare/v1.3.0...v1.3.1) (2023-04-19)
+
+
+### Bug Fixes
+
+* export Adminstration, Contact and SalesInvoice in index ([f15841e](https://github.com/Print-one/moneybird-js/commit/f15841ec5acde11b448efe0354b288bc40457925))
+
 # [1.3.0](https://github.com/Print-one/moneybird-js/compare/v1.2.0...v1.3.0) (2023-04-17)
 
 
