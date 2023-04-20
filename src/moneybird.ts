@@ -86,7 +86,7 @@ export class Moneybird implements HTTP {
     data: unknown,
     options: GaxiosOptions = {}
   ): Promise<T> {
-    debug("moneybird").log(`POST ${url}`);
+    debug("moneybird")(`POST ${url}`);
 
     const response = await this.client.request<T>({
       method: "POST",
@@ -111,7 +111,7 @@ export class Moneybird implements HTTP {
     data: unknown,
     options: GaxiosOptions = {}
   ): Promise<T> {
-    debug("moneybird").log(`PATCH ${url}`);
+    debug("moneybird")(`PATCH ${url}`);
 
     const response = await this.client.request<T>({
       method: "PATCH",
@@ -131,7 +131,7 @@ export class Moneybird implements HTTP {
    * @param options The options for the request
    */
   public async DELETE<T>(url: string, options: GaxiosOptions = {}): Promise<T> {
-    debug("moneybird").log(`DELETE ${url}`);
+    debug("moneybird")(`DELETE ${url}`);
 
     const response = await this.client.request<T>({
       method: "DELETE",

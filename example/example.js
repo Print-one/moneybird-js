@@ -9,6 +9,6 @@ moneybird.instance.setOptions({
   const administrations = await moneybird.instance.administrations();
   for (const administration of administrations) {
     const contacts = await administration.contacts();
-    console.log(contacts);
+    // console.log(administration, contacts);
   }
 })().catch(console.log);
