@@ -23,6 +23,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
+    "debug": "^4.3.4",
     "gaxios": "^5.1.0"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.7",
+    "@types/debug": "^4.1.7",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",

@@ -3,6 +3,7 @@ import { IAdministration, MoneybirdOptions } from "./common";
 import { Administration } from "./administration";
 import { GaxiosOptions } from "gaxios/build/src/common";
 import { HTTP } from "./httpHandler";
+import debug from "debug";
 
 export class Moneybird implements HTTP {
   private readonly client: Gaxios;
@@ -61,7 +62,7 @@ export class Moneybird implements HTTP {
    * @param options The options for the request
    */
   public async GET<T>(url: string, options: GaxiosOptions = {}): Promise<T> {
-    console.debug(`GET ${url}`);
+    debug("moneybird")(`GET ${url}`);
 
     const response = await this.client.request<T>({
       method: "GET",
@@ -85,7 +86,7 @@ export class Moneybird implements HTTP {
     data: unknown,
     options: GaxiosOptions = {}
   ): Promise<T> {
-    console.debug(`POST ${url}`);
+    debug("moneybird").log(`POST ${url}`);
 
     const response = await this.client.request<T>({
       method: "POST",
@@ -110,7 +111,7 @@ export class Moneybird implements HTTP {
     data: unknown,
     options: GaxiosOptions = {}
   ): Promise<T> {
-    console.debug(`PATCH ${url}`);
+    debug("moneybird").log(`PATCH ${url}`);
 
     const response = await this.client.request<T>({
       method: "PATCH",
@@ -130,7 +131,7 @@ export class Moneybird implements HTTP {
    * @param options The options for the request
    */
   public async DELETE<T>(url: string, options: GaxiosOptions = {}): Promise<T> {
-    console.debug(`DELETE ${url}`);
+    debug("moneybird").log(`DELETE ${url}`);
 
     const response = await this.client.request<T>({
       method: "DELETE",
