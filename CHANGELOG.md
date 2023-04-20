@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/Print-one/moneybird-js/compare/v1.3.2...v1.3.3) (2023-04-20)
+
+
+### Bug Fixes
+
+* POST, PATCH, DELETE logging breaking calls ([e10e5fc](https://github.com/Print-one/moneybird-js/commit/e10e5fce975627c3d950117c827ea4c11f7ad3c7))
+
 ## [1.3.2](https://github.com/Print-one/moneybird-js/compare/v1.3.1...v1.3.2) (2023-04-20)
 
 
