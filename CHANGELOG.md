@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/Print-one/moneybird-js/compare/v1.3.1...v1.3.2) (2023-04-20)
+
+
+### Bug Fixes
+
+* hide debug logs ([145b766](https://github.com/Print-one/moneybird-js/commit/145b766333ec44ad507a52f902c4eaf164b15395))
+
 ## [1.3.1](https://github.com/Print-one/moneybird-js/compare/v1.3.0...v1.3.1) (2023-04-19)
 
 
