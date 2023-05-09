@@ -25,7 +25,7 @@ moneybird.instance.setOptions({
   api_token: 'XXXXX',
 });
 
-// Alternatily you can create an new instance
+// Alternatively you can create an new instance
 const instance = new moneybird.Moneybird(
   'https://moneybird.com/api/',
   'v2',
