@@ -259,3 +259,16 @@ export interface ITax {
   created_at: string;
   updated_at: string;
 }
+
+export type ICustomFieldSource =
+  | "sales_invoice"
+  | "contact"
+  | "identity"
+  | "estimate";
+
+export interface ICustomField {
+  id: string;
+  administration_id: string;
+  name: string;
+  source: ICustomFieldSource;
+}

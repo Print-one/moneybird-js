@@ -13,6 +13,7 @@
 - Contact*
 - Sales invoice*
 - Tax rates
+- Custom Fields
 
 *not all endpoints are yet implemented
 

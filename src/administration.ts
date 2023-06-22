@@ -3,6 +3,7 @@ import {
   IAdministration,
   IContact,
   IContactCreate,
+  ICustomField,
   ISalesInvoice,
   ISalesInvoiceCreate,
   ISalesInvoiceState,
@@ -307,4 +308,19 @@ export class Administration {
     });
   }
   //endregion Taxes
+
+  //////////////////////////  CUSTOM FIELDS  //////////////////////////
+  //region Custom Fields
+
+  /**
+   * Returns a list of all custom fields in the administration
+   */
+  public async customFields(
+    params?: PaginatedOptions
+  ): Promise<ICustomField[]> {
+    return await this.HTTP.GET<ICustomField[]>("custom_fields", { params });
+  }
+  //endregion Custom Fields
+  
+  
 }

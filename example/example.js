@@ -15,5 +15,7 @@ moneybird.instance.setOptions({
     });
 
     console.log(taxes);
+
+    console.log(await administration.customFields());
   }
 })().catch(console.log);
