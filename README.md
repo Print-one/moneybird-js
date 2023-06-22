@@ -14,6 +14,7 @@
 - Sales invoice*
 - Tax rates
 - Custom Fields
+- Ledger accounts*
 
 *not all endpoints are yet implemented
 

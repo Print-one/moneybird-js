@@ -4,6 +4,7 @@ import {
   IContact,
   IContactCreate,
   ICustomField,
+  ILedgerAccount,
   ISalesInvoice,
   ISalesInvoiceCreate,
   ISalesInvoiceState,
@@ -253,7 +254,7 @@ export class Administration {
 
   //endregion Invoices
 
-  //////////////////////////  TAXES  //////////////////////////
+  //////////////////////////  TAXES  /////////////////////////////
   //region Taxes
 
   /**
@@ -309,7 +310,7 @@ export class Administration {
   }
   //endregion Taxes
 
-  //////////////////////////  CUSTOM FIELDS  //////////////////////////
+  //////////////////////////  CUSTOM FIELDS  /////////////////////
   //region Custom Fields
 
   /**
@@ -321,6 +322,18 @@ export class Administration {
     return await this.HTTP.GET<ICustomField[]>("custom_fields", { params });
   }
   //endregion Custom Fields
+
+  //////////////////////////  LEDGER ACCOUNTS  ///////////////////
+  //region Ledger Accounts
+
+  /**
+   * Returns a list of all ledger accounts in the administration
+   */
+  public async ledgerAccounts(
+    params?: PaginatedOptions
+  ): Promise<ILedgerAccount[]> {
+    return await this.HTTP.GET<ILedgerAccount[]>("ledger_accounts", { params });
+  }
   
-  
+  //endregion Ledger Accounts
 }

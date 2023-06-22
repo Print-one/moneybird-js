@@ -14,8 +14,10 @@ moneybird.instance.setOptions({
       percentage: 21,
     });
 
-    console.log(taxes);
-
-    console.log(await administration.customFields());
+    console.log(
+      (await administration.ledgerAccounts()).filter(
+        (x) => x.name === "Ongecategoriseerde inkomsten"
+      )
+    );
   }
 })().catch(console.log);

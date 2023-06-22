@@ -272,3 +272,34 @@ export interface ICustomField {
   name: string;
   source: ICustomFieldSource;
 }
+
+export type AccountType =
+  | "non_current_assets"
+  | "current_assets"
+  | "equity"
+  | "provisions"
+  | "non_current_liabilities"
+  | "current_liabilities"
+  | "revenue"
+  | "direct_costs"
+  | "expenses"
+  | "other_income_expenses";
+
+export type DocumentType =
+  | "sales_invoice"
+  | "purchase_invoice"
+  | "general_journal_document"
+  | "financial_mutation"
+  | "payment";
+
+export interface ILedgerAccount {
+  id: string;
+  administration_id: string;
+  name: string;
+  account_type: AccountType;
+  account_id?: string;
+  parent_id?: string;
+  created_at: string;
+  updated_at: string;
+  allowed_document_types: DocumentType[];
+}
