@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Print-one/moneybird-js/compare/v1.4.0...v1.5.0) (2023-06-22)
+
+
+### Features
+
+* workflows endpoints added ([e3bf931](https://github.com/Print-one/moneybird-js/commit/e3bf931f9012154b477a6d4ae5c849a6356e6750))
+
 # [1.4.0](https://github.com/Print-one/moneybird-js/compare/v1.3.3...v1.4.0) (2023-06-22)
 
 
