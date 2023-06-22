@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/Print-one/moneybird-js/compare/v1.3.3...v1.4.0) (2023-06-22)
+
+
+### Features
+
+* custom fields endpoints ([67bd74f](https://github.com/Print-one/moneybird-js/commit/67bd74f27b962d31f6dee939a8edcdb066077fd0))
+* some ledger account endpoints ([ab162fe](https://github.com/Print-one/moneybird-js/commit/ab162fe634e9da4237ac8f071d24b4989fbb6748))
+* taxes endpoints ([3eee0d2](https://github.com/Print-one/moneybird-js/commit/3eee0d28c744515833ea70025428393d0dcb2339))
+
 ## [1.3.3](https://github.com/Print-one/moneybird-js/compare/v1.3.2...v1.3.3) (2023-04-20)
 
 
