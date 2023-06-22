@@ -241,3 +241,21 @@ export interface ISalesInvoiceCreate {
   }[];
   from_checkout?: boolean;
 }
+
+export type ITaxRateType =
+  | "general_journal_document"
+  | "purchase_invoice"
+  | "sales_invoice";
+
+export interface ITax {
+  id: string;
+  administration_id: string;
+  name: string;
+  percentage: string;
+  tax_rate_type: ITaxRateType;
+  show_tax: boolean;
+  active: boolean;
+  country?: string;
+  created_at: string;
+  updated_at: string;
+}

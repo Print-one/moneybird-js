@@ -12,6 +12,7 @@
 - Administration
 - Contact*
 - Sales invoice*
+- Tax rates
 
 *not all endpoints are yet implemented
 

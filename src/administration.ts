@@ -6,6 +6,8 @@ import {
   ISalesInvoice,
   ISalesInvoiceCreate,
   ISalesInvoiceState,
+  ITax,
+  ITaxRateType,
 } from "./common";
 import { Contact } from "./contact";
 import { HTTP, HttpHandler } from "./httpHandler";
@@ -249,4 +251,60 @@ export class Administration {
   }
 
   //endregion Invoices
+
+  //////////////////////////  TAXES  //////////////////////////
+  //region Taxes
+
+  /**
+   * Returns a list of all taxes in the administration
+   */
+  public async taxes(params?: PaginatedOptions): Promise<ITax[]> {
+    return await this.HTTP.GET<ITax[]>("tax_rates", { params });
+  }
+
+  /**
+   * Returns a list of all taxes in the administration that match the given filter
+   * @param filter The filter to apply to the taxes
+   * @param pagination The pagination options
+   */
+  public async filterTaxes(
+    filter: Partial<{
+      // Select taxes with a certain name
+      name: string;
+      // Select taxes with a partial name
+      partial_name: string;
+      // Select taxes with a certain percentage
+      percentage: number;
+      // Select taxes with a certain type
+      tax_rate_type: "all" | ITaxRateType | ITaxRateType[];
+      // Select taxes within a certain country
+      country: string;
+      // Select taxes that are visible on the invoice
+      show_tax: boolean;
+      // Select taxes that are active
+      active: boolean;
+      // Select taxes created after the given time (exclusive). ISO 8601 formatted string. The time to compare with is in UTC timezone
+      created_after: string;
+      // Select taxes updated after the given time (exclusive). ISO 8601 formatted string. The time to compare with is in UTC timezone
+      updated_after: string;
+    }>,
+    pagination: PaginatedOptions = {}
+  ): Promise<ITax[]> {
+    let filterParam = "";
+
+    if (filter) {
+      filterParam = Object.entries(filter)
+        // @ts-expect-error TS doesn't know that the value is an array
+        .map(([key, value]) => `${key}:${value.join ? value.join("|") : value}`)
+        .join(",");
+    }
+
+    return await this.HTTP.GET<ITax[]>("tax_rates", {
+      params: {
+        filter: filterParam,
+        ...pagination,
+      },
+    });
+  }
+  //endregion Taxes
 }

@@ -7,8 +7,13 @@ moneybird.instance.setOptions({
 
 (async () => {
   const administrations = await moneybird.instance.administrations();
+  // console.log(administrations);
   for (const administration of administrations) {
-    const contacts = await administration.contacts();
-    // console.log(administration, contacts);
+    const taxes = await administration.filterTaxes({
+      tax_rate_type: "sales_invoice",
+      percentage: 21,
+    });
+
+    console.log(taxes);
   }
 })().catch(console.log);

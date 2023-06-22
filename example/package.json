@@ -5,10 +5,10 @@
     "@print-one/moneybird-js": "file:../"
   },
   "scripts": {
-    "start": "cd ../ && npm run build && cd example && cross-env DEBUG=moneybird* node ./example.js"
+    "start": "cd ../ && npm run build && cd example && env-cmd -f ./.env node ./example.js"
   },
   "devDependencies": {
     "@types/node": "^18.15.12",
-    "cross-env": "^7.0.3"
+    "env-cmd": "^10.1.0"
   }
 }
