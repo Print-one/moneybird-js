@@ -10,6 +10,7 @@ import {
   ISalesInvoiceState,
   ITax,
   ITaxRateType,
+  IWorkflow,
 } from "./common";
 import { Contact } from "./contact";
 import { HTTP, HttpHandler } from "./httpHandler";
@@ -334,6 +335,18 @@ export class Administration {
   ): Promise<ILedgerAccount[]> {
     return await this.HTTP.GET<ILedgerAccount[]>("ledger_accounts", { params });
   }
-  
+
   //endregion Ledger Accounts
+
+  //////////////////////////  WORKFLOWS  /////////////////////////
+  //region Workflows
+
+  /**
+   * Returns a list of all workflows in the administration
+   */
+  public async workflows(params?: PaginatedOptions): Promise<IWorkflow[]> {
+    return await this.HTTP.GET<IWorkflow[]>("workflows", { params });
+  }
+
+  //endregion Workflows
 }

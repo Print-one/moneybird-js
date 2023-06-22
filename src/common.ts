@@ -303,3 +303,19 @@ export interface ILedgerAccount {
   updated_at: string;
   allowed_document_types: DocumentType[];
 }
+
+export type WorkflowType = "EstimateWorkflow" | "InvoiceWorkflow";
+
+export interface IWorkflow {
+  id: string;
+  administration_id: string;
+  type: string;
+  name: string;
+  default: boolean;
+  currency: string;
+  language: string;
+  active: boolean;
+  prices_are_incl_tax: boolean;
+  created_at: string;
+  updated_at: string;
+}

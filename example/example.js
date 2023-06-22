@@ -19,5 +19,7 @@ moneybird.instance.setOptions({
         (x) => x.name === "Ongecategoriseerde inkomsten"
       )
     );
+
+    console.log(await administration.workflows());
   }
 })().catch(console.log);

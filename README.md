@@ -15,6 +15,7 @@
 - Tax rates
 - Custom Fields
 - Ledger accounts*
+- Workflows
 
 *not all endpoints are yet implemented
 
