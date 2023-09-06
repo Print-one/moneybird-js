@@ -276,7 +276,7 @@ export interface IPaymentCreate {
 }
 
 export type IManualPaymentAction =
-  "private_payment"
+  | "private_payment"
   | "payment_without_proof"
   | "cash_payment"
   | "rounding_error"

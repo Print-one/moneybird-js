@@ -12,7 +12,7 @@ export class Contact {
   constructor(
     moneybird: Moneybird,
     administration: Administration,
-    data: IContact
+    data: IContact,
   ) {
     this.moneybird = moneybird;
     this.administration = administration;
@@ -20,7 +20,7 @@ export class Contact {
     this.data = data;
     this.HTTP = new HttpHandler(
       this.administration.HTTP,
-      `contacts/${this.id}`
+      `contacts/${this.id}`,
     );
   }
 

@@ -13,9 +13,9 @@ moneybird.instance.setOptions({
       if (invoice.data.id === "391346733960922236") {
         console.log(invoice.data.payments);
         await invoice.addPayment({
-          price: 1.60,
+          price: 1.6,
           payment_date: "2023-09-06",
-          manual_payment_action: "balance_settlement"
+          manual_payment_action: "balance_settlement",
         });
       }
     }

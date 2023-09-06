@@ -8,5 +8,5 @@ export { MoneybirdOptions } from "./common";
 
 export const instance: Moneybird = new Moneybird(
   "https://moneybird.com/api/",
-  "v2"
+  "v2",
 );

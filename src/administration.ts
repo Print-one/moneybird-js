@@ -56,7 +56,7 @@ export class Administration {
         // company_name, attention, firstname, lastname, address1, address2, zipcode, city, country, email, phone, customer_id, tax_number, chamber_of_commerce, bank_account
         query: string;
       }
-    >
+    >,
   ): Promise<Contact[]> {
     const contacts = await this.HTTP.GET<IContact[]>("contacts", {
       params,
@@ -81,7 +81,7 @@ export class Administration {
       // The date the contact was last updated
       updated_after: string;
     }>,
-    pagination: PaginatedOptions = {}
+    pagination: PaginatedOptions = {},
   ): Promise<Contact[]> {
     const filterString = Object.entries(filter)
       .map(([key, value]) => `${key}:${value}`)
@@ -133,11 +133,11 @@ export class Administration {
    * @param contact The contact to create
    */
   public async createContact(
-    contact: Partial<IContactCreate>
+    contact: Partial<IContactCreate>,
   ): Promise<Contact> {
     if (!(contact.company_name || (contact.firstname && contact.lastname))) {
       throw new Error(
-        "Either company_name or first_name and last_name must be set"
+        "Either company_name or first_name and last_name must be set",
       );
     }
 
@@ -155,7 +155,7 @@ export class Administration {
    * Returns a list of all sales invoices in the administration
    */
   public async salesInvoices(
-    params?: PaginatedOptions
+    params?: PaginatedOptions,
   ): Promise<SalesInvoice[]> {
     const invoices = await this.HTTP.GET<ISalesInvoice[]>("sales_invoices", {
       params,
@@ -199,7 +199,7 @@ export class Administration {
       // Select invoices updated after the given time (exclusive). ISO 8601 formatted string. The time to compare with is in UTC timezone
       updated_after: string;
     }>,
-    pagination: PaginatedOptions = {}
+    pagination: PaginatedOptions = {},
   ): Promise<SalesInvoice[]> {
     let filterParam = "";
 
@@ -244,7 +244,7 @@ export class Administration {
    * @param invoice The invoice to create
    */
   public async createSalesInvoice(
-    invoice: Partial<ISalesInvoiceCreate>
+    invoice: Partial<ISalesInvoiceCreate>,
   ): Promise<SalesInvoice> {
     const data = await this.HTTP.POST<ISalesInvoice>("sales_invoices", {
       sales_invoice: invoice,
@@ -291,7 +291,7 @@ export class Administration {
       // Select taxes updated after the given time (exclusive). ISO 8601 formatted string. The time to compare with is in UTC timezone
       updated_after: string;
     }>,
-    pagination: PaginatedOptions = {}
+    pagination: PaginatedOptions = {},
   ): Promise<ITax[]> {
     let filterParam = "";
 
@@ -318,7 +318,7 @@ export class Administration {
    * Returns a list of all custom fields in the administration
    */
   public async customFields(
-    params?: PaginatedOptions
+    params?: PaginatedOptions,
   ): Promise<ICustomField[]> {
     return await this.HTTP.GET<ICustomField[]>("custom_fields", { params });
   }
@@ -331,7 +331,7 @@ export class Administration {
    * Returns a list of all ledger accounts in the administration
    */
   public async ledgerAccounts(
-    params?: PaginatedOptions
+    params?: PaginatedOptions,
   ): Promise<ILedgerAccount[]> {
     return await this.HTTP.GET<ILedgerAccount[]>("ledger_accounts", { params });
   }

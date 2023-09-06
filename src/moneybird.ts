@@ -84,7 +84,7 @@ export class Moneybird implements HTTP {
   public async POST<T>(
     url: string,
     data: unknown,
-    options: GaxiosOptions = {}
+    options: GaxiosOptions = {},
   ): Promise<T> {
     debug("moneybird")(`POST ${url}`);
 
@@ -109,7 +109,7 @@ export class Moneybird implements HTTP {
   public async PATCH<T>(
     url: string,
     data: unknown,
-    options: GaxiosOptions = {}
+    options: GaxiosOptions = {},
   ): Promise<T> {
     debug("moneybird")(`PATCH ${url}`);
 

@@ -23,7 +23,7 @@ export class HttpHandler implements HTTP {
   public async POST<T>(
     url: string,
     data: unknown,
-    options: GaxiosOptions = {}
+    options: GaxiosOptions = {},
   ): Promise<T> {
     return await this.parent.POST<T>(`${this.url}/${url}`, data, options);
   }
@@ -31,7 +31,7 @@ export class HttpHandler implements HTTP {
   public async PATCH<T>(
     url: string,
     data: unknown,
-    options: GaxiosOptions = {}
+    options: GaxiosOptions = {},
   ): Promise<T> {
     return await this.parent.PATCH<T>(`${this.url}/${url}`, data, options);
   }
