@@ -1,7 +1,7 @@
 import { HttpHandler } from "./httpHandler";
 import { Moneybird } from "./moneybird";
 import { Administration } from "./administration";
-import { ISalesInvoice } from "./common";
+import {IPayment, IPaymentCreate, ISalesInvoice} from "./common";
 
 export class SalesInvoice {
   private readonly moneybird: Moneybird;
@@ -47,5 +47,30 @@ export class SalesInvoice {
    */
   public async downloadPackingSlip(): Promise<string> {
     return this.HTTP.GET<string>("download_packing_slip_pdf");
+  }
+
+  /**
+   * Add a payment to the sales invoice
+   * @param payment The payment to add
+   */
+  public async addPayment(payment: IPaymentCreate): Promise<IPayment> {
+    return this.HTTP.POST<IPayment>("payments", {
+      payment: payment,
+    });
+  }
+
+  /**
+   * Delete a payment from the sales invoice
+   * @param payment The payment to delete
+   */
+  public async deletePayment(payment: IPayment): Promise<void>
+  /**
+   * Delete a payment from the sales invoice
+   * @param paymentId The ID of the payment to delete
+   */
+  public async deletePayment(paymentId: string): Promise<void>
+  public async deletePayment(payment: IPayment | string): Promise<void>{
+    let id = (typeof payment === "string") ? payment : payment.id;
+    await this.HTTP.DELETE<void>(`payments/${id}`);
   }
 }

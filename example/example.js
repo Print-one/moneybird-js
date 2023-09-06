@@ -7,19 +7,17 @@ moneybird.instance.setOptions({
 
 (async () => {
   const administrations = await moneybird.instance.administrations();
-  // console.log(administrations);
   for (const administration of administrations) {
-    const taxes = await administration.filterTaxes({
-      tax_rate_type: "sales_invoice",
-      percentage: 21,
-    });
-
-    console.log(
-      (await administration.ledgerAccounts()).filter(
-        (x) => x.name === "Ongecategoriseerde inkomsten"
-      )
-    );
-
-    console.log(await administration.workflows());
+    const invoices = await administration.salesInvoices();
+    for (const invoice of invoices) {
+      if (invoice.data.id === "391346733960922236") {
+        console.log(invoice.data.payments);
+        await invoice.addPayment({
+          price: 1.60,
+          payment_date: "2023-09-06",
+          manual_payment_action: "balance_settlement"
+        });
+      }
+    }
   }
 })().catch(console.log);
