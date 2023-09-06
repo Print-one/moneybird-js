@@ -163,7 +163,7 @@ export interface ISalesInvoice {
     created_at: string;
     updated_at: string;
   }[];
-  payments: never[];
+  payments: IPayment[];
   total_paid: string;
   total_unpaid: string;
   total_unpaid_base: string;
@@ -241,6 +241,48 @@ export interface ISalesInvoiceCreate {
   }[];
   from_checkout?: boolean;
 }
+
+export interface IPayment {
+  id: string;
+  administration_id: string;
+  invoice_type: string;
+  invoice_id: string;
+  financial_account_id?: string;
+  user_id: string;
+  payment_transaction_id?: string;
+  transaction_identifier?: string;
+  price: string;
+  price_base: string;
+  payment_date: string;
+  credit_invoice_id?: string;
+  financial_mutation_id?: string;
+  ledger_account_id?: string;
+  linked_payment_id?: string;
+  manual_payment_action?: IManualPaymentAction;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IPaymentCreate {
+  payment_date: string;
+  price: number;
+  price_base?: number;
+  financial_account_id?: string;
+  financial_mutation_id?: string;
+  transaction_identifier?: string;
+  manual_payment_action?: IManualPaymentAction;
+  ledger_account_id?: string;
+  invoice_id?: string;
+}
+
+export type IManualPaymentAction =
+  "private_payment"
+  | "payment_without_proof"
+  | "cash_payment"
+  | "rounding_error"
+  | "bank_transfer"
+  | "balance_settlement"
+  | "invoices_settlement";
 
 export type ITaxRateType =
   | "general_journal_document"
