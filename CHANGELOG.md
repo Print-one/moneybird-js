@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/Print-one/moneybird-js/compare/v1.5.0...v1.6.0) (2023-09-06)
+
+
+### Features
+
+* payments endpoints added ([5e13ef7](https://github.com/Print-one/moneybird-js/commit/5e13ef74c84b2182bbf7b2ef9bcc86f4f1e57985))
+* payments types added ([2ee79a0](https://github.com/Print-one/moneybird-js/commit/2ee79a0c299889276d074bace07aa573ecbcca98))
+
 # [1.5.0](https://github.com/Print-one/moneybird-js/compare/v1.4.0...v1.5.0) (2023-06-22)
 
 
