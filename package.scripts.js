@@ -2,16 +2,16 @@
 
 module.exports = {
   scripts: {
-    build: "nps clean && tsc --project tsconfig.build.json",
+    build: ["bsm clean", "tsc --project tsconfig.build.json"],
     clean: "rimraf ./lib",
     format: {
-      default: "nps --prefix=format eslint prettier packageJson",
+      _default: "bsm ~.*",
       eslint: "eslint --fix .",
       packageJson: "prettier-package-json --write",
       prettier: "prettier --write .",
     },
     lint: {
-      default: "nps --prefix=lint eslint prettier",
+      _default: "bsm ~.*",
       eslint: "eslint .",
       prettier: "prettier -c .",
     },

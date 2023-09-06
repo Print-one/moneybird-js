@@ -15,10 +15,10 @@
     "lib/**"
   ],
   "scripts": {
-    "build": "nps build",
-    "clean": "nps clean",
-    "format": "nps format",
-    "lint": "nps lint",
+    "build": "bsm build",
+    "clean": "bsm clean",
+    "format": "bsm format",
+    "lint": "bsm lint",
     "semantic-release": "semantic-release"
   },
   "types": "lib/index.d.ts",
@@ -27,13 +27,13 @@
     "gaxios": "^5.1.0"
   },
   "devDependencies": {
-    "@markforged/nps": "^5.11.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.7",
     "@types/debug": "^4.1.7",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
+    "@under_koen/bsm": "^0.0.6",
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-no-relative-import-paths": "^1.5.2",
