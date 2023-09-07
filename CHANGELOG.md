@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/Print-one/moneybird-js/compare/v1.6.0...v1.6.1) (2023-09-07)
+
+
+### Bug Fixes
+
+* export all common types ([65fe2ad](https://github.com/Print-one/moneybird-js/commit/65fe2aded885a0a8e097fff41470183a04d57075))
+
 # [1.6.0](https://github.com/Print-one/moneybird-js/compare/v1.5.0...v1.6.0) (2023-09-06)
 
 
