@@ -4,9 +4,9 @@ export { Moneybird };
 export { Administration } from "./administration";
 export { Contact } from "./contact";
 export { SalesInvoice } from "./salesInvoice";
-export { MoneybirdOptions } from "./common";
+export * from "./common";
 
 export const instance: Moneybird = new Moneybird(
   "https://moneybird.com/api/",
-  "v2",
+  "v2"
 );
