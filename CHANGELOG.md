@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/Print-one/moneybird-js/compare/v1.7.0...v1.8.0) (2023-10-12)
+
+
+### Features
+
+* send invoice endpoint added. Thanks @SimonsThijs ([#2](https://github.com/Print-one/moneybird-js/issues/2)) ([00a3de7](https://github.com/Print-one/moneybird-js/commit/00a3de729b15e880ef71d7b5b8bd3685d1d85151))
+
 # [1.7.0](https://github.com/Print-one/moneybird-js/compare/v1.6.1...v1.7.0) (2023-10-12)
 
 
