@@ -1,7 +1,7 @@
 import { HttpHandler } from "./httpHandler";
 import { Moneybird } from "./moneybird";
 import { Administration } from "./administration";
-import { IPayment, IPaymentCreate, ISalesInvoice } from "./common";
+import { IAttachment, IPayment, IPaymentCreate, ISalesInvoice } from "./common";
 
 export class SalesInvoice {
   private readonly moneybird: Moneybird;
@@ -72,5 +72,49 @@ export class SalesInvoice {
   public async deletePayment(payment: IPayment | string): Promise<void> {
     const id = typeof payment === "string" ? payment : payment.id;
     await this.HTTP.DELETE<void>(`payments/${id}`);
+  }
+
+  /**
+   * Add attachment to the sales invoice
+   */
+  public async addAttachment(content: ArrayBuffer): Promise<void> {
+    const formData = new FormData();
+    formData.append("file", new Blob([content]));
+
+    return this.HTTP.POST("attachments", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
+
+  /**
+   * Delete attachment from the sales invoice
+   */
+  public async deleteAttachment(attachment: IAttachment): Promise<void>;
+  public async deleteAttachment(attachmentId: string): Promise<void>;
+  public async deleteAttachment(
+    attachment: IAttachment | string
+  ): Promise<void> {
+    const attachmentId =
+      typeof attachment === "string" ? attachment : attachment.id;
+    return this.HTTP.DELETE<void>(`attachments/${attachmentId}`);
+  }
+
+  /**
+   * Download attachment from the sales invoice
+   */
+  public async downloadAttachment(
+    attachment: IAttachment
+  ): Promise<ArrayBuffer>;
+  public async downloadAttachment(attachmentId: string): Promise<ArrayBuffer>;
+  public async downloadAttachment(
+    attachment: IAttachment | string
+  ): Promise<ArrayBuffer> {
+    const attachmentId =
+      typeof attachment === "string" ? attachment : attachment.id;
+    return this.HTTP.GET<ArrayBuffer>(`attachments/${attachmentId}/download`, {
+      responseType: "arraybuffer",
+    });
   }
 }

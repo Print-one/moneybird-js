@@ -23,8 +23,8 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "debug": "^4.3.4",
-    "axios": "^1.5.1"
+    "axios": "^1.5.1",
+    "debug": "^4.3.4"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
