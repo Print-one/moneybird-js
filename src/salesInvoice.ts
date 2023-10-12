@@ -13,7 +13,7 @@ export class SalesInvoice {
   constructor(
     moneybird: Moneybird,
     administration: Administration,
-    data: ISalesInvoice,
+    data: ISalesInvoice
   ) {
     this.moneybird = moneybird;
     this.administration = administration;
@@ -21,7 +21,7 @@ export class SalesInvoice {
     this.data = data;
     this.HTTP = new HttpHandler(
       this.administration.HTTP,
-      `sales_invoices/${this.id}`,
+      `sales_invoices/${this.id}`
     );
   }
 

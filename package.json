@@ -24,7 +24,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "debug": "^4.3.4",
-    "gaxios": "^5.1.0"
+    "axios": "^1.5.1"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
