@@ -255,6 +255,16 @@ export interface ISalesInvoiceCreate {
   from_checkout?: boolean;
 }
 
+export interface ISalesInvoiceSending {
+  delivery_method?: "Email" | "Simplerinvoicing" | "Manual";
+  sending_scheduled?: boolean;
+  deliver_ubl?: boolean;
+  mergeable?: boolean;
+  email_address?: string;
+  email_message?: string;
+  invoice_date?: string;
+}
+
 export interface IPayment {
   id: string;
   administration_id: string;
