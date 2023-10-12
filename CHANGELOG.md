@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/Print-one/moneybird-js/compare/v1.6.1...v1.7.0) (2023-10-12)
+
+
+### Bug Fixes
+
+* return ArrayBuffer instead of string ([9b3f39d](https://github.com/Print-one/moneybird-js/commit/9b3f39d9021c5232dbdde747c6e8b39bce36fea9))
+
+
+### Features
+
+* invoice attachments ([9223c39](https://github.com/Print-one/moneybird-js/commit/9223c39ef8f92b89f1964c7fdbe2cb52abed57ce))
+
 ## [1.6.1](https://github.com/Print-one/moneybird-js/compare/v1.6.0...v1.6.1) (2023-09-07)
 
 
