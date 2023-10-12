@@ -1,7 +1,12 @@
 import { HttpHandler } from "./httpHandler";
 import { Moneybird } from "./moneybird";
 import { Administration } from "./administration";
-import { IAttachment, IPayment, IPaymentCreate, ISalesInvoice, ISalesInvoiceSending } from "./common";
+import {
+ IAttachment, IPayment,
+  IPaymentCreate,
+  ISalesInvoice,
+  ISalesInvoiceSending,
+} from "./common";
 
 export class SalesInvoice {
   private readonly moneybird: Moneybird;
@@ -25,13 +30,14 @@ export class SalesInvoice {
     );
   }
 
-
   /**
    * Send the sales invoice
    * @returns A sales invoice
    */
-  public async send(data: ISalesInvoiceSending): Promise<SalesInvoice> {
-    return this.HTTP.PATCH<SalesInvoice>("send_invoice", {sales_invoice_sending: data});
+  public async send(data: ISalesInvoiceSending = {}): Promise<SalesInvoice> {
+    return this.HTTP.PATCH<SalesInvoice>("send_invoice", {
+      sales_invoice_sending: data,
+    });
   }
 
   /**

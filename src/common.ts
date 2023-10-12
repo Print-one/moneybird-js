@@ -256,7 +256,7 @@ export interface ISalesInvoiceCreate {
 }
 
 export interface ISalesInvoiceSending {
-  delivery_method: string;
+  delivery_method?: "Email" | "Simplerinvoicing" | "Manual";
   sending_scheduled?: boolean;
   deliver_ubl?: boolean;
   mergeable?: boolean;
