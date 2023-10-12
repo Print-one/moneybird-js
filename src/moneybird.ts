@@ -1,12 +1,11 @@
-import { Gaxios, GaxiosResponse } from "gaxios";
+import axios, { Axios, AxiosResponse, AxiosRequestConfig } from "axios";
 import { IAdministration, MoneybirdOptions } from "./common";
 import { Administration } from "./administration";
-import { GaxiosOptions } from "gaxios/build/src/common";
 import { HTTP } from "./httpHandler";
 import debug from "debug";
 
 export class Moneybird implements HTTP {
-  private readonly client: Gaxios;
+  private readonly client: Axios;
   private readonly url: string;
   private readonly version: string;
   private options: MoneybirdOptions = { api_token: "" };
@@ -15,8 +14,8 @@ export class Moneybird implements HTTP {
     this.url = url;
     this.version = version;
 
-    this.client = new Gaxios({
-      baseUrl: new URL(version, url).href + "/",
+    this.client = axios.create({
+      baseURL: new URL(version, url).href + "/",
       responseType: "json",
       validateStatus: () => true,
     });
@@ -31,10 +30,7 @@ export class Moneybird implements HTTP {
   public setOptions(options: MoneybirdOptions): void {
     this.options = options;
 
-    this.client.defaults.headers = {
-      Authorization: `Bearer ${options.api_token}`,
-    };
-
+    this.client.defaults.headers.common.Authorization = `Bearer ${options.api_token}`;
     this.client.defaults.responseType = "json";
   }
 
@@ -61,7 +57,10 @@ export class Moneybird implements HTTP {
    * @param url The url to perform the request to
    * @param options The options for the request
    */
-  public async GET<T>(url: string, options: GaxiosOptions = {}): Promise<T> {
+  public async GET<T>(
+    url: string,
+    options: AxiosRequestConfig = {}
+  ): Promise<T> {
     debug("moneybird")(`GET ${url}`);
 
     const response = await this.client.request<T>({
@@ -84,7 +83,7 @@ export class Moneybird implements HTTP {
   public async POST<T>(
     url: string,
     data: unknown,
-    options: GaxiosOptions = {},
+    options: AxiosRequestConfig = {}
   ): Promise<T> {
     debug("moneybird")(`POST ${url}`);
 
@@ -109,7 +108,7 @@ export class Moneybird implements HTTP {
   public async PATCH<T>(
     url: string,
     data: unknown,
-    options: GaxiosOptions = {},
+    options: AxiosRequestConfig = {}
   ): Promise<T> {
     debug("moneybird")(`PATCH ${url}`);
 
@@ -130,7 +129,10 @@ export class Moneybird implements HTTP {
    * @param url The url to perform the request to
    * @param options The options for the request
    */
-  public async DELETE<T>(url: string, options: GaxiosOptions = {}): Promise<T> {
+  public async DELETE<T>(
+    url: string,
+    options: AxiosRequestConfig = {}
+  ): Promise<T> {
     debug("moneybird")(`DELETE ${url}`);
 
     const response = await this.client.request<T>({
@@ -144,7 +146,7 @@ export class Moneybird implements HTTP {
     return response.data;
   }
 
-  private handleErrors(response: GaxiosResponse) {
+  private handleErrors(response: AxiosResponse) {
     let error = "Unknown error;";
     switch (response.status) {
       case 200:

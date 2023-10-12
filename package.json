@@ -1,6 +1,6 @@
 {
   "name": "@print-one/moneybird-js",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "A client for Moneybird in javascript",
   "license": "MIT",
   "author": "Print.one",
@@ -23,8 +23,8 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "debug": "^4.3.4",
-    "gaxios": "^5.1.0"
+    "axios": "^1.5.1",
+    "debug": "^4.3.4"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",

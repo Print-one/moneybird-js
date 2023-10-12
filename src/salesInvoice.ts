@@ -1,7 +1,7 @@
 import { HttpHandler } from "./httpHandler";
 import { Moneybird } from "./moneybird";
 import { Administration } from "./administration";
-import { IPayment, IPaymentCreate, ISalesInvoice, ISalesInvoiceSending } from "./common";
+import { IAttachment, IPayment, IPaymentCreate, ISalesInvoice, ISalesInvoiceSending } from "./common";
 
 export class SalesInvoice {
   private readonly moneybird: Moneybird;
@@ -13,7 +13,7 @@ export class SalesInvoice {
   constructor(
     moneybird: Moneybird,
     administration: Administration,
-    data: ISalesInvoice,
+    data: ISalesInvoice
   ) {
     this.moneybird = moneybird;
     this.administration = administration;
@@ -21,7 +21,7 @@ export class SalesInvoice {
     this.data = data;
     this.HTTP = new HttpHandler(
       this.administration.HTTP,
-      `sales_invoices/${this.id}`,
+      `sales_invoices/${this.id}`
     );
   }
 
@@ -38,24 +38,30 @@ export class SalesInvoice {
    * Download the PDF of the sales invoice
    * @returns The content of the PDF
    */
-  public async downloadPDF(): Promise<string> {
-    return this.HTTP.GET<string>("download_pdf");
+  public async downloadPDF(): Promise<ArrayBuffer> {
+    return this.HTTP.GET<ArrayBuffer>("download_pdf", {
+      responseType: "arraybuffer",
+    });
   }
 
   /**
    * Download the UBL of the sales invoice
    * @returns The content of the UBL
    */
-  public async downloadUBL(): Promise<string> {
-    return this.HTTP.GET<string>("download_ubl");
+  public async downloadUBL(): Promise<ArrayBuffer> {
+    return this.HTTP.GET<ArrayBuffer>("download_ubl", {
+      responseType: "arraybuffer",
+    });
   }
 
   /**
    * Download the packing slip of the sales invoice
    * @returns The PDF content of the packing slip
    */
-  public async downloadPackingSlip(): Promise<string> {
-    return this.HTTP.GET<string>("download_packing_slip_pdf");
+  public async downloadPackingSlip(): Promise<ArrayBuffer> {
+    return this.HTTP.GET<ArrayBuffer>("download_packing_slip_pdf", {
+      responseType: "arraybuffer",
+    });
   }
 
   /**
@@ -81,5 +87,49 @@ export class SalesInvoice {
   public async deletePayment(payment: IPayment | string): Promise<void> {
     const id = typeof payment === "string" ? payment : payment.id;
     await this.HTTP.DELETE<void>(`payments/${id}`);
+  }
+
+  /**
+   * Add attachment to the sales invoice
+   */
+  public async addAttachment(content: ArrayBuffer): Promise<void> {
+    const formData = new FormData();
+    formData.append("file", new Blob([content]));
+
+    return this.HTTP.POST("attachments", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
+
+  /**
+   * Delete attachment from the sales invoice
+   */
+  public async deleteAttachment(attachment: IAttachment): Promise<void>;
+  public async deleteAttachment(attachmentId: string): Promise<void>;
+  public async deleteAttachment(
+    attachment: IAttachment | string
+  ): Promise<void> {
+    const attachmentId =
+      typeof attachment === "string" ? attachment : attachment.id;
+    return this.HTTP.DELETE<void>(`attachments/${attachmentId}`);
+  }
+
+  /**
+   * Download attachment from the sales invoice
+   */
+  public async downloadAttachment(
+    attachment: IAttachment
+  ): Promise<ArrayBuffer>;
+  public async downloadAttachment(attachmentId: string): Promise<ArrayBuffer>;
+  public async downloadAttachment(
+    attachment: IAttachment | string
+  ): Promise<ArrayBuffer> {
+    const attachmentId =
+      typeof attachment === "string" ? attachment : attachment.id;
+    return this.HTTP.GET<ArrayBuffer>(`attachments/${attachmentId}/download`, {
+      responseType: "arraybuffer",
+    });
   }
 }

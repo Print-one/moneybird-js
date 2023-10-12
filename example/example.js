@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const moneybird = require("@print-one/moneybird-js");
+const fs = require("fs");
 
 moneybird.instance.setOptions({
   api_token: process.env.MONEYBIRD_API_KEY,
@@ -11,12 +12,13 @@ moneybird.instance.setOptions({
     const invoices = await administration.salesInvoices();
     for (const invoice of invoices) {
       if (invoice.data.id === "391346733960922236") {
-        console.log(invoice.data.payments);
-        await invoice.addPayment({
-          price: 1.6,
-          payment_date: "2023-09-06",
-          manual_payment_action: "balance_settlement",
-        });
+        for (let attachment of invoice.data.attachments) {
+          console.log(await invoice.downloadAttachment(attachment));
+          await invoice.deleteAttachment(attachment);
+        }
+
+        const file = fs.readFileSync("./dummy.pdf");
+        await invoice.addAttachment(file);
       }
     }
   }

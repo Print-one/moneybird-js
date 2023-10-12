@@ -185,7 +185,7 @@ export interface ISalesInvoice {
     value: string;
   }[];
   notes: never[];
-  attachments: never[];
+  attachments: IAttachment[];
   events: never[];
   tax_totals: {
     tax_rate_id: string;
@@ -194,6 +194,19 @@ export interface ISalesInvoice {
     tax_amount: string;
     tax_amount_base: string;
   }[];
+}
+
+export interface IAttachment {
+  id: string;
+  administration_id: string;
+  attachable_id: string;
+  attachable_type: "SalesInvoice" | string;
+  file_name: string;
+  content_type: string;
+  size: number;
+  rotation: number;
+  created_at: string;
+  updated_at: string;
 }
 
 export type ISalesInvoiceState =
