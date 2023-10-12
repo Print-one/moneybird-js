@@ -29,24 +29,30 @@ export class SalesInvoice {
    * Download the PDF of the sales invoice
    * @returns The content of the PDF
    */
-  public async downloadPDF(): Promise<string> {
-    return this.HTTP.GET<string>("download_pdf");
+  public async downloadPDF(): Promise<ArrayBuffer> {
+    return this.HTTP.GET<ArrayBuffer>("download_pdf", {
+      responseType: "arraybuffer",
+    });
   }
 
   /**
    * Download the UBL of the sales invoice
    * @returns The content of the UBL
    */
-  public async downloadUBL(): Promise<string> {
-    return this.HTTP.GET<string>("download_ubl");
+  public async downloadUBL(): Promise<ArrayBuffer> {
+    return this.HTTP.GET<ArrayBuffer>("download_ubl", {
+      responseType: "arraybuffer",
+    });
   }
 
   /**
    * Download the packing slip of the sales invoice
    * @returns The PDF content of the packing slip
    */
-  public async downloadPackingSlip(): Promise<string> {
-    return this.HTTP.GET<string>("download_packing_slip_pdf");
+  public async downloadPackingSlip(): Promise<ArrayBuffer> {
+    return this.HTTP.GET<ArrayBuffer>("download_packing_slip_pdf", {
+      responseType: "arraybuffer",
+    });
   }
 
   /**
