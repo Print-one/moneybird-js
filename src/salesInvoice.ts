@@ -2,7 +2,8 @@ import { HttpHandler } from "./httpHandler";
 import { Moneybird } from "./moneybird";
 import { Administration } from "./administration";
 import {
- IAttachment, IPayment,
+  IAttachment,
+  IPayment,
   IPaymentCreate,
   ISalesInvoice,
   ISalesInvoiceSending,
@@ -98,9 +99,12 @@ export class SalesInvoice {
   /**
    * Add attachment to the sales invoice
    */
-  public async addAttachment(content: ArrayBuffer): Promise<void> {
+  public async addAttachment(
+    content: ArrayBuffer,
+    file_name?: string
+  ): Promise<void> {
     const formData = new FormData();
-    formData.append("file", new Blob([content]));
+    formData.append("file", new Blob([content]), file_name);
 
     return this.HTTP.POST("attachments", formData, {
       headers: {
