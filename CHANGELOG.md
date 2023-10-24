@@ -1,3 +1,11 @@
+## [1.8.1](https://github.com/Print-one/moneybird-js/compare/v1.8.0...v1.8.1) (2023-10-24)
+
+
+### Bug Fixes
+
+* add attachment file name ([87e8a33](https://github.com/Print-one/moneybird-js/commit/87e8a336ee052e308a146b251b7a639681cf448c))
+* debugger show correct ms ([a703512](https://github.com/Print-one/moneybird-js/commit/a703512e723bccbab7ac51bec69429b3e283d6c2))
+
 # [1.8.0](https://github.com/Print-one/moneybird-js/compare/v1.7.0...v1.8.0) (2023-10-12)
 
 
