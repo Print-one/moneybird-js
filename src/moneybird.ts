@@ -9,6 +9,7 @@ export class Moneybird implements HTTP {
   private readonly url: string;
   private readonly version: string;
   private options: MoneybirdOptions = { api_token: "" };
+  private debug = debug("moneybird");
 
   constructor(url: string, version: string, options?: MoneybirdOptions) {
     this.url = url;
@@ -61,7 +62,7 @@ export class Moneybird implements HTTP {
     url: string,
     options: AxiosRequestConfig = {}
   ): Promise<T> {
-    debug("moneybird")(`GET ${url}`);
+    this.debug(`GET ${url}`);
 
     const response = await this.client.request<T>({
       method: "GET",
@@ -85,7 +86,7 @@ export class Moneybird implements HTTP {
     data: unknown,
     options: AxiosRequestConfig = {}
   ): Promise<T> {
-    debug("moneybird")(`POST ${url}`);
+    this.debug(`POST ${url}`);
 
     const response = await this.client.request<T>({
       method: "POST",
@@ -110,7 +111,7 @@ export class Moneybird implements HTTP {
     data: unknown,
     options: AxiosRequestConfig = {}
   ): Promise<T> {
-    debug("moneybird")(`PATCH ${url}`);
+    this.debug(`PATCH ${url}`);
 
     const response = await this.client.request<T>({
       method: "PATCH",
@@ -133,7 +134,7 @@ export class Moneybird implements HTTP {
     url: string,
     options: AxiosRequestConfig = {}
   ): Promise<T> {
-    debug("moneybird")(`DELETE ${url}`);
+    this.debug(`DELETE ${url}`);
 
     const response = await this.client.request<T>({
       method: "DELETE",
