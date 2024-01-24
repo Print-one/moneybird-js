@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/Print-one/moneybird-js/compare/v1.8.1...v1.8.2) (2024-01-24)
+
+
+### Bug Fixes
+
+* **types:** make amount optional in invoice details_attributes ([8227275](https://github.com/Print-one/moneybird-js/commit/8227275c0c9466f86d5dd467d7fc2e90d76ea15a))
+
 ## [1.8.1](https://github.com/Print-one/moneybird-js/compare/v1.8.0...v1.8.1) (2023-10-24)
 
 
