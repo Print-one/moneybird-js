@@ -14,6 +14,7 @@ module.exports = {
       _default: "bsm ~.*",
       eslint: "eslint .",
       prettier: "prettier -c .",
+      typescript: "tsc --noEmit",
     },
   },
 };

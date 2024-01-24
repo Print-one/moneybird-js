@@ -238,7 +238,7 @@ export interface ISalesInvoiceCreate {
     description: string;
     period?: string;
     price: string;
-    amount: number;
+    amount?: number | string;
     tax_rate_id: string;
     ledger_account_id: string;
     project_id?: string;
