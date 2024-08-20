@@ -288,7 +288,7 @@ export interface IPayment {
 
 export interface IPaymentCreate {
   payment_date: string;
-  price: number;
+  price: number | string;
   price_base?: number;
   financial_account_id?: string;
   financial_mutation_id?: string;

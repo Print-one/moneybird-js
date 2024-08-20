@@ -3,6 +3,7 @@ import { IAdministration, MoneybirdOptions } from "./common";
 import { Administration } from "./administration";
 import { HTTP } from "./httpHandler";
 import debug from "debug";
+import { TimeoutError } from "./errors/timeoutError";
 
 export class Moneybird implements HTTP {
   private readonly client: Axios;
@@ -186,7 +187,11 @@ export class Moneybird implements HTTP {
         break;
       case 429:
         error = "Too many requests - See Throttling information";
-        break;
+
+        throw new TimeoutError(
+          error,
+          new Date(response.headers["retry-after"] * 1000)
+        );
       case 500:
         error =
           "Internal server error - Something went wrong while processing the request. This is unexpected behaviour and requires Moneybird to fix the scenario.";

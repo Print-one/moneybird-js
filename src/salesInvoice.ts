@@ -36,9 +36,13 @@ export class SalesInvoice {
    * @returns A sales invoice
    */
   public async send(data: ISalesInvoiceSending = {}): Promise<SalesInvoice> {
-    return this.HTTP.PATCH<SalesInvoice>("send_invoice", {
-      sales_invoice_sending: data,
-    });
+    return new SalesInvoice(
+      this.moneybird,
+      this.administration,
+      await this.HTTP.PATCH<ISalesInvoice>("send_invoice", {
+        sales_invoice_sending: data,
+      })
+    );
   }
 
   /**
@@ -141,5 +145,23 @@ export class SalesInvoice {
     return this.HTTP.GET<ArrayBuffer>(`attachments/${attachmentId}/download`, {
       responseType: "arraybuffer",
     });
+  }
+
+  /**
+   * Update the sales invoice
+   */
+  public async update(data: Partial<ISalesInvoice>): Promise<SalesInvoice> {
+    return new SalesInvoice(
+      this.moneybird,
+      this.administration,
+      await this.HTTP.PATCH<ISalesInvoice>("", { sales_invoice: data })
+    );
+  }
+
+  /**
+   * Delete the sales invoice
+   */
+  public async delete(): Promise<void> {
+    return this.HTTP.DELETE<void>("");
   }
 }
