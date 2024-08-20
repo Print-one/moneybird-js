@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/Print-one/moneybird-js/compare/v1.9.0...v1.9.1) (2024-08-20)
+
+
+### Bug Fixes
+
+* export TimeoutError ([d1f0e08](https://github.com/Print-one/moneybird-js/commit/d1f0e08b8df5c891259af3b0daebc7794371bdd3))
+
 # [1.9.0](https://github.com/Print-one/moneybird-js/compare/v1.8.2...v1.9.0) (2024-08-20)
 
 
