@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/Print-one/moneybird-js/compare/v1.8.2...v1.9.0) (2024-08-20)
+
+
+### Features
+
+* throw an timeout error for when an timeout is happened ([eea9212](https://github.com/Print-one/moneybird-js/commit/eea9212aaf9038e4f384d694b4db9bad169f602d))
+
 ## [1.8.2](https://github.com/Print-one/moneybird-js/compare/v1.8.1...v1.8.2) (2024-01-24)
 
 
