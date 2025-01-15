@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/Print-one/moneybird-js/compare/v1.9.1...v1.10.0) (2025-01-15)
+
+
+### Features
+
+* support webhooks ([b203921](https://github.com/Print-one/moneybird-js/commit/b203921c44d16cff8942ca45e29f23d18dc043e1))
+
 ## [1.9.1](https://github.com/Print-one/moneybird-js/compare/v1.9.0...v1.9.1) (2024-08-20)
 
 
