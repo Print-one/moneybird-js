@@ -10,6 +10,8 @@ import {
   ISalesInvoiceState,
   ITax,
   ITaxRateType,
+  IWebhook,
+  IWebhookCreate,
   IWorkflow,
 } from "./common";
 import { Contact } from "./contact";
@@ -349,4 +351,22 @@ export class Administration {
   }
 
   //endregion Workflows
+
+  //////////////////////////  WEBHOOKS  /////////////////////////
+  //region Webhooks
+
+  public async webhooks(params?: PaginatedOptions): Promise<IWebhook[]> {
+    return await this.HTTP.GET<IWebhook[]>("webhooks", { params });
+  }
+
+  public async createWebhook(webhook: IWebhookCreate): Promise<IWebhook> {
+    return await this.HTTP.POST<IWebhook>("webhooks", { webhook });
+  }
+
+  public async deleteWebhook(webhook: string | IWebhook): Promise<void> {
+    const id = typeof webhook === "string" ? webhook : webhook.id;
+    await this.HTTP.DELETE(`webhooks/${id}`);
+  }
+
+  //endregion Webhooks
 }

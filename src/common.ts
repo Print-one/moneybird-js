@@ -384,3 +384,21 @@ export interface IWorkflow {
   created_at: string;
   updated_at: string;
 }
+
+export interface IWebhook {
+  id: string;
+  administration_id: string;
+  url: string;
+  enabled_events: string[];
+  last_http_status: number | null;
+  last_http_response: unknown | null;
+  token: string;
+}
+
+export interface IWebhookCreate {
+  url: string;
+  /**
+   * For available events, see https://developer.moneybird.com/webhooks/#events
+   */
+  enabled_events?: string[];
+}
