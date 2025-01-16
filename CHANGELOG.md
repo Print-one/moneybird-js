@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/Print-one/moneybird-js/compare/v1.10.0...v1.10.1) (2025-01-16)
+
+
+### Bug Fixes
+
+* create webhook body wrong ([56cb3f3](https://github.com/Print-one/moneybird-js/commit/56cb3f35b15916f050b3c1854218b4eea88ee46c))
+
 # [1.10.0](https://github.com/Print-one/moneybird-js/compare/v1.9.1...v1.10.0) (2025-01-15)
 
 
