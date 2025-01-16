@@ -360,7 +360,7 @@ export class Administration {
   }
 
   public async createWebhook(webhook: IWebhookCreate): Promise<IWebhook> {
-    return await this.HTTP.POST<IWebhook>("webhooks", { webhook });
+    return await this.HTTP.POST<IWebhook>("webhooks", webhook);
   }
 
   public async deleteWebhook(webhook: string | IWebhook): Promise<void> {
