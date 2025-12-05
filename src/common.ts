@@ -82,6 +82,8 @@ export interface IContactCreate {
   lastname: string;
   chamber_of_commerce: string;
   bank_account: string;
+  email: string;
+  email_ubl: boolean;
   send_invoices_to_attention: string;
   send_invoices_to_email: string;
   send_estimates_to_attention: string;
@@ -97,7 +99,6 @@ export interface IContactCreate {
   si_identifier: string;
   invoice_workflow_id?: string;
   estimate_workflow_id?: string;
-  email_ubl: boolean;
   direct_debit: boolean;
   custom_fields_attributes: {
     id: string;
