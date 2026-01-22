@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/Print-one/moneybird-js/compare/v1.10.1...v1.10.2) (2026-01-22)
+
+
+### Bug Fixes
+
+* add email to contact create ([91dbc63](https://github.com/Print-one/moneybird-js/commit/91dbc63dcba766bceeb34c5610ca6de672f47178))
+
 ## [1.10.1](https://github.com/Print-one/moneybird-js/compare/v1.10.0...v1.10.1) (2025-01-16)
 
 
