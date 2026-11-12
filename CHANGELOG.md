@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/Print-one/moneybird-js/compare/v1.10.2...v1.11.0) (2026-11-12)
+
+
+### Features
+
+* add note to sales invoice ([a6d836d](https://github.com/Print-one/moneybird-js/commit/a6d836dcaf1dfbc7a2011924177b418bf329a350))
+
 ## [1.10.2](https://github.com/Print-one/moneybird-js/compare/v1.10.1...v1.10.2) (2026-01-22)
 
 
