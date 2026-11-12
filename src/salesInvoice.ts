@@ -3,6 +3,8 @@ import { Moneybird } from "./moneybird";
 import { Administration } from "./administration";
 import {
   IAttachment,
+  INote,
+  INoteCreate,
   IPayment,
   IPaymentCreate,
   ISalesInvoice,
@@ -98,6 +100,14 @@ export class SalesInvoice {
   public async deletePayment(payment: IPayment | string): Promise<void> {
     const id = typeof payment === "string" ? payment : payment.id;
     await this.HTTP.DELETE<void>(`payments/${id}`);
+  }
+
+  /**
+   * Add a note (or to-do) to the sales invoice
+   * @param note The note to add
+   */
+  public async addNote(note: INoteCreate): Promise<INote> {
+    return this.HTTP.POST<INote>("notes", { note });
   }
 
   /**

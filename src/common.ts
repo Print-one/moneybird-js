@@ -299,6 +299,29 @@ export interface IPaymentCreate {
   invoice_id?: string;
 }
 
+export interface INote {
+  id: string;
+  administration_id: string;
+  entity_id: string;
+  entity_type: string;
+  user_id: string;
+  assignee_id: string | null;
+  todo: boolean;
+  note: string;
+  completed_at: string | null;
+  completed_by_id: string | null;
+  todo_type: string | null;
+  data: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface INoteCreate {
+  note: string;
+  todo?: boolean;
+  assignee_id?: string;
+}
+
 export type IManualPaymentAction =
   | "private_payment"
   | "payment_without_proof"
